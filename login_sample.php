@@ -1,5 +1,12 @@
 <?php
-
+	
+	require_once("functions.php");
+	
+	if(!isset($_SESSION["logged_in_user_id"])){
+		
+		header("Location: data.php")
+	}
+	
   // muuutujad errorite jaoks
 	$email_error = "";
 	$password_error = "";
@@ -39,6 +46,7 @@
 				
 				$hash = hash("sha512", $password);
 				
+				loginUser($email, $hash);
 			}
 
 		} // login if end
@@ -71,6 +79,7 @@
 				
 				echo "Võib kasutajat luua! Kasutajanimi on ".$create_email." ja parool on ".$create_password. " ja räsi on".$hash;
 				
+				createUser($create_email, $hash);
 				//Salvestame andmebaasid
       }
 
