@@ -52,19 +52,11 @@
 	<a href="?logout=1"> Logi valja<a>
 </p>
 
-<html>
-<head>
-</head>
-<body>
-
-<h2>Lisa autonumbrimarki</h2>
-
+<h2>Lisa autonumbrimärk</h2>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
-	<label for="number_plte">Auto numbrimärk</label><br>
-	<input id="number_plate" type="text" value="<?php echo $number_plate; ?>"> <?php echo $number_plate_error; ?><br><br>
+	<label for="number_plate" >Auto numbrimärk</label><br>
+	<input id="number_plate" name="number_plate" type="text" value="<?php echo $number_plate; ?>"> <?php echo $number_plate_error; ?><br><br>
 	<label for="color">Värv</label><br>
-	<input name="color" type="text" value="<?php echo $color; ?>"> <?php echo $color_error; ?><br><br>
+	<input id="color" name="color" type="text" value="<?php echo $color; ?>"> <?php echo $color_error; ?><br><br>
 	<input type="submit" name="add_plate" value="Add">
 </form>
-<body>
-<html>
