@@ -2,9 +2,8 @@
 	
 	require_once("functions.php");
 	
-	if(!isset($_SESSION["logged_in_user_id"])){
-		
-		header("Location: data.php")
+	if(isset($_SESSION["logged_in_user_id"])){
+		header("Location: data.php");
 	}
 	
   // muuutujad errorite jaoks

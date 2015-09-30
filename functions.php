@@ -19,7 +19,6 @@
 		$mysqli = new mysqli($GLOBALS["servername"], $GLOBALS["server_username"], $GLOBALS["server_password"], $GLOBALS["database"]);
 		
 		$stmt = $mysqli->prepare("SELECT id, email FROM user_sample WHERE email=? AND password=?");
-		$stmt = $mysqli->prepare("SELECT id, email FROM user_sample WHERE email=? AND password=?");
 		$stmt->bind_param("ss", $email, $hash);
 		$stmt->bind_result($id_from_db, $email_from_db);
 		$stmt->execute();
@@ -37,6 +36,20 @@
 			echo "Wrong redentials";
 		}
 		
+		$stmt->close();
+		
+		$mysqli->close();
+	}
+	
+	function addCarPlate($car_plate, $car_color){
+		
+		
+		
+		$mysqli = new mysqli($GLOBALS["servername"], $GLOBALS["server_username"], $GLOBALS["server_password"], $GLOBALS["database"]);
+		
+		$stmt = $mysqli->prepare("INSERT INTO car_plates (user_id, number_plate, color) VALUES (?, ?, ?)");
+		$stmt->bind_param("iss", $_SESSION["logged_in_user_id"] $car_plate, $car_color);
+		$stmt->execute();
 		$stmt->close();
 		
 		$mysqli->close();
