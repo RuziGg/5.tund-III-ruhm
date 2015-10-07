@@ -49,7 +49,20 @@
 		
 		$stmt = $mysqli->prepare("INSERT INTO car_plates (user_id, number_plate, color) VALUES (?,?,?)");
 		$stmt->bind_param("iss", $_SESSION["logged_in_user_id"], $car_plate, $car_color);
-		$stmt->execute();
+		
+		//sonum
+		$message = "";
+		
+		if($stmt->execute()){
+			//kui on tõene, siis INSERT õnnestus
+			$message = "Sai edukalt lisatud";
+		}else{
+			//kui on väär, siis kuvame error
+			echo $stmt->error;
+		}
+		
+		return $message;
+		
 		$stmt->close();
 		
 		$mysqli->close();
